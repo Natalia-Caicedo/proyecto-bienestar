@@ -1,1 +1,25 @@
+# EVIDENCIAS REALES - PROBLEMA VALIDADO EN YOPAL
+Proyecto: Sistema Web PWA para gestion y difusion de eventos de Bienestar Unitropico
+Fecha: 17 de septiembre de 2026 - Fuente: FB Unitropico 35k seguidores
 
+Figura 1. Evidencia 1 - Inscripcion fragmentada externa (02/09/2026)
+Archivo: evidencia1_cursos_libres_forms.jpg
+Descripcion: Publicacion Cursos Libres Arte y Cultura 2026B usa link externo truncado Microsoft Forms.
+Problema: No hay login, no hay control cupos tiempo real, queda en Excel externo.
+Justificacion Ruta C: Reemplaza Forms por inscripcion offline con QR en IndexedDB.
+
+Figura 2. Evidencia 2 - Difusion sin gestion (07/09/2026)
+Archivo: evidencia2_prevencion_suicidio.jpg
+Descripcion: Evento Mes Prevencion Suicidio 10 sep 2026 8AM Auditorio. Solo flyer.
+Problema: No hay boton inscripcion, no QR, no agregar a calendario.
+Justificacion Ruta E: LLM responde Donde es el evento sin buscar feed.
+
+Figura 3. Evidencia 3 - Difusion tardia (22/08/2026)
+Archivo: evidencia3_feria_tardia.jpg
+Descripcion: Feria Servicios 12 agosto publicada 22 agosto 10 dias DESPUES.
+Problema: No calendario anticipado consultable.
+
+Figura 4. Evidencia 4 - Repositorio no estructurado [EVIDENCIA REINA]
+Archivo: evidencia4_galeria_dispersa.jpg
+Descripcion: Captura seccion Fotos FB oficial Unitropico. En una sola cuadricula mezclados Bienestar, practicas, Dia biologo, resoluciones CEU 033 y 032, matriculas, ICETEX, canto llanero.
+Problema: No filtro por tipo evento, fecha o dependencia. No buscador.
