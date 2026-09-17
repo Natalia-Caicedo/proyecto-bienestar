@@ -1,1 +1,17 @@
+# ANTEPROYECTO - TECNOLOGIA WEB - SEMANA 3
+Proyecto: Sistema Web PWA para gestion y difusion de eventos Bienestar Unitropico
+Equipo: Daniel Gomez, Natalia Caicedo, Angie Viancha
+Repo: github.com/Natalia-Caicedo/proyecto-bienestar
+Fecha: 17 septiembre 2026 - Yopal, Casanare
 
+1. PROBLEMA VALIDADO: Info Bienestar fragmentada en FB, inscripciones externas Forms y difusion tardia.
+
+2. REPOSITORIO: Creado con carpetas /documentos/evidencias y /documentos/anteproyecto. 4 capturas reales.
+
+3. WIREFRAMES: Home Catalogo, Detalle Evento, Mis Inscripciones con QR offline, Admin Bienestar.
+
+4. RUTAS: Principal C - PWA sin conexion JUSTIFICADA por Figura 4 (galeria dispersa). Secundaria E - LLM para buscar sin scrollear.
+
+5. PLAN SEM 3-15: Sem 3-4 evidencias y wireframes, Sem 5-6 API, Sem 7-8 PWA cache, Sem 9-10 inscripcion offline QR, Sem 11-12 LLM + Push, Sem 13-15 pruebas y despliegue.
+
+Referencias APA: Unitropico 2026. Pagina oficial Facebook [Capturas 02/09/2026, 07/09/2026, 22/08/2026 y galeria 17/09/2026]. Recuperado facebook.com/UnitropicoOficial
