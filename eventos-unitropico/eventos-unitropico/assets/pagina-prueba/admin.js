@@ -43,11 +43,12 @@ function enroll(id){
  <button class="btn">Confirmar inscripción</button>
  <button type="button" class="btn o" style="margin-top:8px" onclick="closeM()">Cancelar</button></form>`)}
 function sendReg(x,id){
- x.preventDefault();const f=new FormData(x.target),doc=cl(f.get('d'));
+ x.preventDefault();const e=ev(id),f=new FormData(x.target),doc=cl(f.get('d'));
+ if(Number(e.cu)<=0){toast('No quedan cupos disponibles');return}
  if(REG.some(r=>r.id===id&&r.d===doc)){toast('Ese documento ya está inscrito en este evento');return}
  REG.push({id,n:cl(f.get('n')),d:doc,c:cl(f.get('c')),t:cl(f.get('t')),v:f.get('v'),p:cl(f.get('p')),f:new Date().toLocaleString('es-CO')});
- S.enr[id]=doc;save();saveE();closeM();render();toast('¡Inscripción confirmada!')}
-function unenroll(id){REG=REG.filter(r=>!(r.id===id&&r.d===S.enr[id]));delete S.enr[id];save();saveE();render();toast('Inscripción cancelada')}
+ e.cu=Number(e.cu)-1;S.enr[id]=doc;save();saveE();closeM();render();toast('¡Inscripción confirmada!')}
+function unenroll(id){const e=ev(id),n=REG.length;REG=REG.filter(r=>!(r.id===id&&r.d===S.enr[id]));if(e&&REG.length<n)e.cu=Math.min(Number(e.cu)+1,Number(e.tot));delete S.enr[id];save();saveE();render();toast('Inscripción cancelada')}
 
 /* ---------- Acceso administrativo ---------- */
 function adminBtn(){
