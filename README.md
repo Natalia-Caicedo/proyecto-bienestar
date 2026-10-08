@@ -6,7 +6,7 @@ Sistema web de eventos de Bienestar Universitario de Unitrópico: reúne en un s
 |---|---|
 | 🌐 **Prototipo publicado** | [Ver prototipo en GitHub Pages]( https://natalia-caicedo.github.io/proyecto-bienestar/) |
 | 📄 **Contrato de la API** | [`docs/Contrato-API.pdf`](docs/Contrato-API.pdf) |
-| 🏷️ **Versión** | 1.0 *(ajustar si cambia)* |
+| 🏷️ **Versión** | 1.0  |
 
 ## Tabla de contenido
 
