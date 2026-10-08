@@ -10,7 +10,7 @@ Capturas del prototipo en funcionamiento. Se puede probar en el [enlace de GitHu
 
 ## Inicio
 
-![Pantalla de inicio](./01-inicio.png)
+![Pantalla de inicio](./01-inicio.png) 
 
 ## Explorar
 
