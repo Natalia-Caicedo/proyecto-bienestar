@@ -10,7 +10,7 @@ Capturas del prototipo en funcionamiento. Se puede probar en el [enlace de GitHu
 
 ## Inicio
 
-![Pantalla de inicio](https://raw.githubusercontent.com/Natalia-Caicedo/proyecto-bienestar/main/docs/WIREFRAMES/01-inicio.png)
+![Pantalla de inicio](https://github.com/Natalia-Caicedo/proyecto-bienestar/blob/main/docs/WIREFRAMES/01-inicio.png?raw=true)
 
 ## Explorar
 
