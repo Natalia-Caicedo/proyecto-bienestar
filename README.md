@@ -1,229 +1,120 @@
-# proyecto-bienestar
+# Eventos Unitrópico
 
-# Contrato de API REST Sistema Web de Eventos Unitrópico
-Proyecto: Sistema web de eventos de Bienestar Universitario de Unitrópico
+Sistema web de eventos de Bienestar Universitario de Unitrópico: reúne en un solo lugar los eventos de la universidad, permite filtrarlos por categoría, inscribirse y, para el personal autorizado, publicar, corregir y eliminar eventos.
 
-## 1. Introducción
-Este documento define el contrato de la API REST propuesta para el sistema web de Eventos Unitropico. El contrato establece las reglas mediante las cuales el frontend y el backend intercambiarán información, incluyendo endpoints, métodos HTTP, parámetros, estructuras JSON, códigos de respuesta y reglas básicas de autenticación.
-La propuesta toma como referencia el prototipo web de Eventos Unitropico disponible en GitHub Pages, y está diseñada para permitir que el prototipo evolucione hacia un sistema conectado a un backend y una base de datos.
+| | |
+|---|---|
+| 🌐 **Prototipo publicado** | [Ver prototipo en GitHub Pages](https://natalia-caicedo.github.io/proyecto-bienestar/eventos-unitropico/eventosunitropico/assets/pagina-prueba/) |
+| 📄 **Contrato de la API** | [`docs/Contrato-API.pdf`](docs/Contrato-API.pdf) |
+| 🏷️ **Versión** | 1.0 *(ajustar si cambia)* |
 
-## 2. Objetivo
-Definir una interfaz de comunicación estandarizada entre el cliente web y los servicios del sistema de eventos, de manera que los módulos puedan desarrollarse y probarse de forma independiente.
+## Tabla de contenido
 
-## 3. Alcance
-El contrato contempla la consulta, creación, actualización y eliminación de eventos; consulta de categorías; registro e inicio de sesión de usuarios; y gestión de inscripciones a eventos. Las operaciones administrativas deberán estar protegidas mediante autenticación y autorización.
+1. [El problema](#el-problema)
+2. [Curso y equipo](#curso-y-equipo)
+3. [Qué hay en este repositorio](#qué-hay-en-este-repositorio)
+4. [Estructura del proyecto](#estructura-del-proyecto)
+5. [Cómo ejecutarlo en local](#cómo-ejecutarlo-en-local)
+6. [Contrato de la API](#contrato-de-la-api)
+7. [Estado del proyecto](#estado-del-proyecto)
+8. [Uso de inteligencia artificial](#uso-de-inteligencia-artificial)
 
-## 4. Arquitectura de comunicación
-La comunicación propuesta sigue el flujo:
-Frontend web → API REST → Backend → Base de datos
-El frontend realiza solicitudes HTTP a la API. El backend valida la solicitud, ejecuta la lógica de negocio y consulta o modifica la base de datos. La API devuelve una respuesta en formato JSON.
+## El problema
 
-## 5. Configuración general
-Versión v1
-Base URL propuesta https://api.eventos.unitropico.edu.co/api/v1
-Protocolo HTTPS
-Formato de intercambio JSON
-Codificación UTF-8
-Arquitectura REST
-Autenticación Bearer Token / JWT para recursos protegidos
-Contrato de API REST – Eventos Unitrópico
-Documento técnico – Versión 1.0
+La información de los eventos de Unitrópico (deportivos, culturales, académicos y de bienestar) está dispersa. Hoy se publica principalmente en Facebook e Instagram, donde cada publicación nueva desplaza a las anteriores. Por eso, un evento anunciado hace pocos días queda enterrado entre otras publicaciones y es difícil de encontrar.
 
-## 6. Convenciones
-• Las rutas se escriben en minúsculas y utilizan sustantivos para representar recursos.
-• Las fechas utilizan el formato ISO 8601: AAAA-MM-DD.
-• Las horas utilizan el formato HH:MM.
-• Los identificadores de recursos son enteros positivos.
-• Las respuestas se entregan en JSON.
-• Las operaciones protegidas requieren el encabezado Authorization: Bearer <token>.
+Esto genera varias dificultades:
 
-## 7. Endpoints de autenticación
+- **Información que se pierde:** fechas, horas y lugares quedan sepultados bajo las publicaciones más recientes.
+- **Sin una vista única:** no hay un solo sitio donde ver qué eventos vienen, ni cuáles ya se realizaron.
+- **Sin filtros:** la persona no puede buscar por categoría ni por fecha.
+- **Inscripción poco clara:** no hay un medio claro para inscribirse ni para saber cuántos cupos quedan.
 
-### 7.1 Iniciar sesión
-POST /auth/login
-Solicitud:
-{
- "correo": "usuario@unitropico.edu.co",
- "password": "********"
-}
-Respuesta 200 OK:
-{
- "success": true,
- "data": {
- "token": "eyJhbGciOiJIUzI1NiIs...",
- "usuario": {
- "id": 25,
- "nombre": "Usuario Ejemplo",
- "rol": "estudiante"
- }
- }
-}
+**Eventos Unitrópico** propone un sistema web que reúne todos los eventos en un solo catálogo, con filtros por categoría y fecha, y con inscripción en línea. Las personas autorizadas de Bienestar Universitario pueden publicar, corregir y eliminar eventos desde un mismo lugar.
 
-## 7.2 Cerrar sesión
-POST /auth/logout
-Requiere autenticación. Respuesta 200 OK:
-{
- "success": true,
- "message": "Sesión cerrada correctamente"
-}
+## Curso y equipo
 
-## 8. Endpoints de eventos
+| Dato | Valor |
+|------|-------|
+| Curso | *(por completar)* |
+| Equipo / Grupo | *(por completar)* |
 
-### 8.1 Listar eventos
-GET /eventos
-Contrato de API REST – Eventos Unitrópico
-Documento técnico – Versión 1.0
-Parámetros opcionales: categoria, fecha, estado, buscar.
-Ejemplo: GET /eventos?categoria=deportivo&estado=proximo
-Respuesta 200 OK:
-{
- "success": true,
- "data": [
- {
- "id": 1,
- "nombre": "Torneo de Fútbol Unitrópico",
- "descripcion": "Torneo deportivo universitario",
- "categoria": "Deportivo",
- "fecha": "2026-10-15",
- "hora": "08:00",
- "lugar": "Cancha Unitrópico",
- "imagen": "/images/evento-futbol.jpg",
- "cupos": 50,
- "cupos_disponibles": 23,
- "estado": "proximo"
- }
- ]
-}
+| Integrante | Rol | Usuario de GitHub |
+|------------|-----|-------------------|
+| Maryi Natalia Caicedo Barreto | *(rol)* | *(@usuario)* |
+| Angie Zarith Viancha Tumay | *(rol)* | *(@usuario)* |
+|Daniel Gómez Pidiache | *(rol)* | *(@usuario)* |
 
-### 8.2 Consultar un evento
-GET /eventos/{id}
-Ejemplo: GET /eventos/1
-Respuesta 200 OK:
-{
- "success": true,
- "data": {
- "id": 1,
- "nombre": "Torneo de Fútbol Unitrópico",
- "descripcion": "Torneo deportivo universitario",
- "categoria": "Deportivo",
- "fecha": "2026-10-15",
- "hora": "08:00",
- "lugar": "Cancha Unitrópico",
- "cupos": 50,
- "cupos_disponibles": 23,
- "estado": "proximo"
- }
-}
-### 8.3 Crear evento
-POST /eventos
-Requiere rol de administrador u organizador autorizado.
-Contrato de API REST – Eventos Unitrópico
-Documento técnico – Versión 1.0
-Solicitud:
-{
- "nombre": "Festival Cultural Unitrópico",
- "descripcion": "Festival de actividades culturales",
- "categoria_id": 2,
- "fecha": "2026-11-20",
- "hora": "14:00",
- "lugar": "Auditorio Principal",
- "cupos": 100
-}
-Respuesta 201 Created:
-{
- "success": true,
- "message": "Evento creado correctamente",
- "data": {
- "id": 15,
- "nombre": "Festival Cultural Unitrópico"
- }
-}
+## Qué hay en este repositorio
 
-### 8.4 Actualizar evento
-PUT /eventos/{id}
-Requiere rol de administrador u organizador autorizado.
-Solicitud:
-{
- "nombre": "Festival Cultural Unitrópico 2026",
- "fecha": "2026-11-21",
- "hora": "15:00",
- "lugar": "Auditorio Principal",
- "cupos": 120
-}
+| Producto | Dónde | Qué es |
+|----------|-------|--------|
+| Prototipo navegable | [`eventos-unitropico/eventosunitropico/assets/pagina-prueba/`](eventos-unitropico/eventosunitropico/assets/pagina-prueba/) | Catálogo de eventos con filtros, tarjetas y barra de navegación inferior; parte administrativa y formulario de inscripción *(ajustar a lo que ya esté hecho)*. |
+| Imágenes | [`eventos-unitropico/eventosunitropico/assets/`](eventos-unitropico/eventosunitropico/assets/) | Logo de Unitrópico y fotos de los eventos de ejemplo (danza llanera, festival de música, herramientas digitales, maratón, yoga). |
+| Contrato de API | [`docs/Contrato-API.pdf`](docs/Contrato-API.pdf) | API REST v1: autenticación, eventos, categorías, inscripciones y usuarios, con estructuras JSON, códigos de respuesta y reglas de negocio. |
+| Anteproyecto | [`doc/`](doc/) | Documento de anteproyecto de la primera entrega. |
+| Evidencias | [`docs/`](docs/) | Archivo `evidencias` y capturas de pantalla de WhatsApp. |
+| Informe | [`issue.md`](issue.md) | Informe registrado como issue. |
+| Página de entrada | [`index.html`](index.html) | Redirige a la página principal del prototipo. |
 
-### 8.5 Eliminar evento
-DELETE /eventos/{id}
-Requiere rol de administrador u organizador autorizado.
-Respuesta 200 OK:
-{
- "success": true,
- "message": "Evento eliminado correctamente"
-}
+## Estructura del proyecto
 
-## 9. Categorías
-GET /categorias
-Respuesta 200 OK:
-Contrato de API REST – Eventos Unitrópico
-Documento técnico – Versión 1.0
-{
- "success": true,
- "data": [
- {"id": 1, "nombre": "Deportivo"},
- {"id": 2, "nombre": "Cultural"},
- {"id": 3, "nombre": "Académico"},
- {"id": 4, "nombre": "Bienestar"}
- ]
-}
+```text
+proyecto-bienestar/
+├── README.md
+├── index.html                     Redirige a la página principal del prototipo
+├── issue.md                       Informe
+├── doc/
+│   └── anteproyecto               Anteproyecto (primera entrega)
+├── docs/
+│   ├── Contrato-API.pdf           Contrato de la API REST
+│   ├── evidencias                 Evidencias del proyecto
+│   └── WhatsApp Image ...jpeg     Capturas de pantalla
+└── eventos-unitropico/
+    └── eventosunitropico/
+        └── assets/
+            ├── pagina-prueba/     Prototipo web
+            ├── danza-llanera.jpg
+            ├── festival-musica.jpg
+            ├── herramientas-digitales.jpg
+            ├── logo-unitropico.jpg
+            ├── maraton.jpg
+            └── yoga.jpg
+```
 
-## 10. Inscripciones
+## Cómo ejecutarlo en local
 
-### 10.1 Inscribir usuario en evento
-POST /eventos/{id}/inscripciones
-Requiere autenticación.
-Solicitud:
-{
- "usuario_id": 25
-}
-Respuesta 201 Created:
-{
- "success": true,
- "message": "Usuario inscrito correctamente",
- "data": {
- "inscripcion_id": 103,
- "evento_id": 1,
- "usuario_id": 25,
- "estado": "confirmada"
- }
-}
+**Opción 1: ver el prototipo publicado.** Abre el enlace de GitHub Pages que está al inicio de este README. No necesitas instalar nada.
 
-### 10.2 Consultar inscripciones de un usuario
-GET /usuarios/{id}/inscripciones
-Requiere autenticación y autorización para consultar la información correspondiente.
+**Opción 2: en tu computador.**
 
-### 10.3 Cancelar inscripción
-DELETE /inscripciones/{id}
-Requiere autenticación.
-Respuesta 200 OK:
-{
- "success": true,
- "message": "Inscripción cancelada correctamente"
-}
-Contrato de API REST – Eventos Unitrópico
-Documento técnico – Versión 1.0
+1. Clona el repositorio:
 
-## 11. Usuarios
+```bash
+   git clone https://github.com/Natalia-Caicedo/proyecto-bienestar.git
+   cd proyecto-bienestar
+```
 
-### 11.1 Consultar usuario
-GET /usuarios/{id}
-Requiere autenticación y permisos adecuados.
+2. Levanta un servidor local desde la raíz del repositorio (necesitas Python 3):
 
-### 11.2 Actualizar usuario
-| Método | Endpoint | Autenticación | Uso |
-|--------|----------|---------------|-----|
-| POST | /auth/login | No | Inicio de sesión |
-| GET | /eventos | No | Listar/filtrar eventos |
+```bash
+   python3 -m http.server 8080
+```
 
-## 12. Tabla resumen de endpoints
+   En Windows usa `py -m http.server 8080`. También sirve la extensión **Live Server** de VS Code.
+
+3. Abre <http://localhost:8080> en el navegador. `index.html` te lleva al prototipo.
+
+## Contrato de la API
+
+Resumen. El detalle completo (solicitudes, respuestas, errores y reglas de negocio) está en [`docs/Contrato-API.pdf`](docs/Contrato-API.pdf).
+
+| Dato | Valor |
+|------|-------|
+| Versión | v1 |
+| Base URL (propuesta) | `https://api.eventos.unitropico.edu.co/api/v1` |
+| Formato | JSON, UTF-8, HTTPS |
+| Autenticación | Bearer Token / JWT en recursos protegidos |
 
 | Método | Endpoint | Autenticación | Uso |
 |--------|----------|:-------------:|-----|
@@ -241,65 +132,17 @@ Requiere autenticación y permisos adecuados.
 | GET | `/usuarios/{id}` | Sí | Consultar usuario |
 | PUT | `/usuarios/{id}` | Sí | Actualizar usuario |
 
-## 13. Códigos de respuesta HTTP
+## Estado del proyecto
 
-| Código | Significado |
-|:------:|-------------|
-| 200 | Solicitud procesada correctamente. |
-| 201 | Recurso creado correctamente. |
-| 400 | Solicitud inválida o datos incorrectos. |
-| 401 | No autenticado o token inválido. |
-| 403 | Autenticado, pero sin permisos suficientes. |
-| 404 | Recurso no encontrado. |
-| 409 | Conflicto; por ejemplo, inscripción duplicada o cupos agotados. |
-| 422 | Datos válidos sintácticamente, pero no cumplen reglas de validación. |
-| 500 | Error interno del servidor. |
+| Pieza | Estado |
+|-------|--------|
+| Anteproyecto | ✅ Entregado |
+| Prototipo web | *(por completar)* |
+| Contrato de API | ✅ Definido (v1.0) |
+| Backend y base de datos | ⏳ Pendiente |
 
-## 14. Formato estándar de error
-{
- "success": false,
- "message": "No hay cupos disponibles para este evento",
-Contrato de API REST – Eventos Unitrópico
-Documento técnico – Versión 1.0
- "error": "EVENT_FULL"
-}
+## Uso de inteligencia artificial
 
-## 15. Reglas de negocio principales
-• Un evento debe tener nombre, categoría, fecha, hora, lugar y cantidad de cupos.
-• No se debe permitir una inscripción cuando el evento no tenga cupos disponibles.
-• Un usuario no debe poder registrar dos veces la misma inscripción para el mismo evento.
-• Los eventos pasados no deben permitir nuevas inscripciones.
-• La creación, modificación y eliminación de eventos requiere autorización.
-• Las contraseñas nunca deben enviarse ni almacenarse en texto plano; el backend debe aplicar hashing seguro.
-• La API debe utilizar HTTPS para proteger las credenciales y los tokens.
-• La información de usuarios debe limitarse a los datos necesarios para el funcionamiento del
-sistema.
-
-## 16. Roles y permisos
-Operación Estudiante Organizador Administrador
-Consultar eventos Sí Sí Sí
-Inscribirse Sí Sí Sí
-Crear evento No Sí Sí
-Editar evento No Sí* Sí
-Eliminar evento No No* Sí
-Gestionar usuarios No No Sí
-* El alcance exacto de los permisos del organizador deberá definirse según las reglas finales del
-proyecto.
-
-## 17. Ejemplo de flujo completo
-1. El usuario abre el sitio web y consulta los eventos disponibles.
-2. El frontend solicita GET /eventos.
-3. La API devuelve la lista de eventos en JSON.
-4. El usuario selecciona un evento y el frontend solicita GET /eventos/{id}.
-5. El usuario inicia sesión mediante POST /auth/login.
-6. El backend devuelve un token de autenticación.
-7. El usuario solicita la inscripción mediante POST /eventos/{id}/inscripciones enviando el token.
-8. El backend valida identidad, disponibilidad de cupos y reglas de negocio.
-9. La API registra la inscripción y devuelve 201 Created.
-
-## 18. Conclusión
-El presente contrato establece una base común para integrar el prototipo de Eventos Unitrópico con un backend. Su implementación permitirá separar la interfaz de usuario de la lógica de negocio y de la persistencia de datos, facilitando el mantenimiento, las pruebas y la evolución del sistema. La Base URL indicada es una propuesta para el desarrollo; deberá sustituirse por la URL real cuando el backend sea desplegado.
-
-## 19. Referencia del prototipo
-Prototipo consultado: Eventos Unitrópico – GitHub Pages.
-https://natalia-caicedo.github.io/proyecto-bienestar/eventos-unitropico/eventosunitropico/assets/pagina-prueba/
+| Herramienta | Para qué | Alcance |
+|-------------|----------|---------|
+| Claude (Anthropic), mediante el chat de claude.ai | Organizar y redactar el README; redactar el planteamiento del problema; convertir a formato Markdown las tablas del contrato de la API (endpoints, códigos HTTP y roles); ordenar el CSS del prototipo. | Borradores y apoyo de redacción y formato. Las decisiones del proyecto, el contenido del contrato y la revisión final son del equipo. |
