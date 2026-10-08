@@ -1,12 +1,11 @@
 # proyecto-bienestar
 
-# Contrato de API REST
-Sistema Web de Eventos Unitrópico
+# Contrato de API REST Sistema Web de Eventos Unitrópico
 Proyecto: Sistema web de eventos de Bienestar Universitario de Unitrópico
 
 ## 1. Introducción
-Este documento define el contrato de la API REST propuesta para el sistema web de Eventos Unitrópico. El contrato establece las reglas mediante las cuales el frontend y el backend intercambiarán información, incluyendo endpoints, métodos HTTP, parámetros, estructuras JSON, códigos de respuesta y reglas básicas de autenticación.
-La propuesta toma como referencia el prototipo web de Eventos Unitrópico disponible en GitHub Pages, y está diseñada para permitir que el prototipo evolucione hacia un sistema conectado a un backend y una base de datos.
+Este documento define el contrato de la API REST propuesta para el sistema web de Eventos Unitropico. El contrato establece las reglas mediante las cuales el frontend y el backend intercambiarán información, incluyendo endpoints, métodos HTTP, parámetros, estructuras JSON, códigos de respuesta y reglas básicas de autenticación.
+La propuesta toma como referencia el prototipo web de Eventos Unitropico disponible en GitHub Pages, y está diseñada para permitir que el prototipo evolucione hacia un sistema conectado a un backend y una base de datos.
 
 ## 2. Objetivo
 Definir una interfaz de comunicación estandarizada entre el cliente web y los servicios del sistema de eventos, de manera que los módulos puedan desarrollarse y probarse de forma independiente.
