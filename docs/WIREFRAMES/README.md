@@ -9,7 +9,7 @@ Capturas del prototipo en funcionamiento. Se puede probar en el [enlace de GitHu
 | [`04-administracion.png`]| **Administración:** publicar eventos, eliminarlos y consultar inscritos. |
 
 ### Inicio
-![Pantalla de inicio](docs/WIREFRAMES/WIREFRAMES/01-inicio.png to docs/WIREFRAMES/01-inicio.png)
+![Pantalla de inicio](docs/WIREFRAMES/01-inicio.png)
 ### Explorar
 ![Pantalla de explorar con filtros](docs/WIREFRAMES/02-explorar.png)
 
